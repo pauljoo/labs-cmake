@@ -10,6 +10,7 @@
 ## debug和release
 
 ## linux
+cmake -DCMAKE_BUILD_TYPE=Release .
 
 ### gtk环境
 ```shell

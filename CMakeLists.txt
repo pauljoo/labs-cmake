@@ -7,7 +7,8 @@ set(CMAKE_CXX_STANDARD 14)
 SET(CMAKE_MODULE_PATH cmake)
 
 #设置可执行文件的输出目录
-SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/Release)
+SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
+SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
 
 # 利用pkg-config寻找包
 # pkg-config --cflags gtk+-3.0
@@ -26,6 +27,8 @@ add_executable(labs_cmake main.cpp)
 
 target_link_libraries(labs_cmake labs_cmake_subdirectory)
 target_link_libraries (labs_cmake ${GTK3_LIBRARIES})
+
+MESSAGE(CMAKE_CXX_FLAGS_RELEASE)
 
 IF(WIN32)
     MESSAGE(STATUS “This is Windows.”)
